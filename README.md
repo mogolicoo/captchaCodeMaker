@@ -1,1 +1,2 @@
-# Will add info for devs on how to use this one I decode how it works lmao
+# Example code in the examples folder
+code is encoded with base64 so you will need to decode it to use it
