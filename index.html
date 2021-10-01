@@ -3,7 +3,26 @@
     <head>
         <title>FunCaptcha</title>
         <script src="https://roblox-api.funcaptcha.com/fc/api/?onload=fcl" async ></script>
-        <script src="captchaLoader.js"></script>
+        <script>
+        function OnSolve() {
+    const tokenelement = document.getElementById('FunCaptcha-Token')
+    const token = tokenelement.value
+    tokenelement.hidden=false
+    document.getElementById("text").innerHTML=btoa(token)
+    document.getElementById("answer").hidden=false
+}
+
+function loadChallenge() {
+    document.getElementById("button").hidden=true
+    document.getElementById("button2").hidden=false
+    document.getElementById("answer").hidden=true
+    new FunCaptcha({
+        public_key: "A2A14B1D-1AF3-C791-9BBC-EE33CC7A0A6F",
+        target_html: "CAPTCHA",
+        callback: OnSolve
+    });
+}   
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body style="text-align: center;">
