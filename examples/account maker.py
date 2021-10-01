@@ -36,14 +36,15 @@ data = {
 }
 
 response = requests.post('https://auth.roblox.com/v2/signup', headers=headers, json=data)
-print(response)
-print()
 # Debug
+#print(response)
+#print()
 #print(response.text)
 #print()
 
 try:
     cookie = response.cookies[".ROBLOSECURITY"]
+    print()
     print(f'login: {username}:{username[::-1]}')
     print(f'\nCookie:\n{cookie}')
     try: #trys to copy the cookie if you have pyperclip installed
@@ -51,4 +52,5 @@ try:
     except:
         pass
 except:
+    print("Failed to create")
     pass
