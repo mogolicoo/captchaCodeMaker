@@ -1,6 +1,10 @@
 # This code could be improved but its just a example on how to use the code from the site
 
 import requests, base64, random, string
+try:
+    import pyperclip
+except:
+    pass
 
 token = input("Put code from https://roblox-thot.github.io/captchaCodeMaker/ here:\n")
 
@@ -42,5 +46,9 @@ try:
     cookie = response.cookies[".ROBLOSECURITY"]
     print(f'login: {username}{username[::-1]}')
     print(f'\nCookie:\n{cookie}')
+    try: #trys to copy the cookie if you have pyperclip installed
+        pyperclip.copy(cookie)
+    except:
+        pass
 except:
     pass
