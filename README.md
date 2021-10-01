@@ -1,2 +1,1 @@
-# captchaCodeMaker
-Make roblox's funcaptcha code so you can send to discord bots
+# Will add info for devs on how to use this when I get a chance
