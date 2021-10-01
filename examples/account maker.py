@@ -44,7 +44,7 @@ print()
 #print()
 try:
     cookie = response.cookies[".ROBLOSECURITY"]
-    print(f'login: {username}{username[::-1]}')
+    print(f'login: {username}:{username[::-1]}')
     print(f'\nCookie:\n{cookie}')
     try: #trys to copy the cookie if you have pyperclip installed
         pyperclip.copy(cookie)
