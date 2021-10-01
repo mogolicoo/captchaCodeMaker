@@ -35,13 +35,13 @@ data = {
     "agreementIds":["54d8a8f0-d9c8-4cf3-bd26-0cbf8af0bba3","848d8d8f-0e33-4176-bcd9-aa4e22ae7905"]
 }
 
-
 response = requests.post('https://auth.roblox.com/v2/signup', headers=headers, json=data)
 print(response)
 print()
 # Debug
 #print(response.text)
 #print()
+
 try:
     cookie = response.cookies[".ROBLOSECURITY"]
     print(f'login: {username}:{username[::-1]}')
