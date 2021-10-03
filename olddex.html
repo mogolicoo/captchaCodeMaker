@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FunCaptcha</title>
+        <script src="https://roblox-api.funcaptcha.com/fc/api/?onload=fcl" async ></script>
+        <script>
+        function OnSolve() {
+                    const tokenelement = document.getElementById('FunCaptcha-Token')
+                    const token = tokenelement.value
+                    tokenelement.hidden=false
+                    document.getElementById("text").innerHTML=btoa(token)+"\n"
+                    document.getElementById("answer").hidden=false
+                    document.getElementById("button3").hidden=false
+                }
+
+                function loadChallenge() {
+                    document.getElementById("button").hidden=true
+                    document.getElementById("button2").hidden=false
+                    document.getElementById("answer").hidden=true
+                    new FunCaptcha({
+                        public_key: "A2A14B1D-1AF3-C791-9BBC-EE33CC7A0A6F",
+                        target_html: "CAPTCHA",
+                        callback: OnSolve
+                    });
+                }
+                
+                function copyToClipboard() {
+                    document.getElementById("text").select();
+                    document.execCommand("copy");
+                }
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="text-align: center;">
+        <h1>FunCaptcha code maker</h1>
+        <h2>This website will allow you to solve captchas so for what ever requested it.</h2>
+        <button id="button" onclick="loadChallenge()">I'm ready</button>
+        <button id="button2" hidden onclick="window.location.reload(true)">Refresh captcha</button>
+        <button id="button3" hidden onclick="copyToClipboard()">Copy</button>
+        <div id="captchaelem">
+            <div id="victoryId" style="display: none;"></div>
+            <input type="hidden" id="fc-token">
+            <div id="CAPTCHA"></div>
+        </div>
+        
+        <br>
+        <div hidden id="answer">
+            <p>Use this on what ever requested the code.</p>
+            <textarea id="text" cols="100" rows="6"></textarea>
+        </div>
+    </body>
+</html>
