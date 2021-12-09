@@ -6,7 +6,8 @@ try:
 except:
     pass
 
-token = input("Put code from https://roblox-thot.github.io/captchaCodeMaker/ here:\n")
+token = input("Put your captcha token here:\n")
+id = input("Put your captcha id here:\n")
 
 headers = {
     'authority': 'auth.roblox.com',
@@ -30,7 +31,8 @@ data = {
     "referralData":None,
     "displayAvatarV2":False,
     "displayContextV2":False,
-    "captchaToken":base64.b64decode(token),
+    "captchaToken":base64.b64decode(token).decode('utf-8'), # misael's note here: you forgot to decode them
+    "captchaId":base64.b64decode(id).decode('utf-8'),
     "captchaProvider":"PROVIDER_ARKOSE_LABS",
     "agreementIds":["54d8a8f0-d9c8-4cf3-bd26-0cbf8af0bba3","848d8d8f-0e33-4176-bcd9-aa4e22ae7905"]
 }
