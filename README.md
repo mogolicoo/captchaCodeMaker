@@ -1,7 +1,27 @@
-# Archiving this project till I get some time and shit to make a backend!
-# If I continue this it will be in a new repo!
-## If you want help making the captcha backend DM me on [Discord](https://www.discord.com/users/378746510596243458)
+# Roblox Captcha Code Maker
+This will generate a FunCaptcha that works for account creation as now on 12/09/2021
 
-# Example code in the examples folder
-code is encoded with base64 so you will need to decode it to use it
+# Installation:
+You'll need Node.js v16 or newer for running this.
 
+Run `npm install` to install all required dependencies. (express and node-fetch)
+
+Once it has finished installing the dependencies you may start the server with `npm start` 
+
+# Example scripts:
+There is a example folder with two contents:
+
+    + accountMaker.js
+    + accountMaker.py
+
+These two are scripts for creating accounts with the captcha id and token encoded in base64.
+
+# Extra info:
+The captcha token and captcha id that the page provides are encoded in base64, you'll need to decode them if you want to use this in your own project.
+
+# Credits:
+[Roblox-Thot](https://github.com/Roblox-Thot)
+
+[Misael](https://github.com/mogolicoo)
+
+## Need help with something? Add me on [Discord](https://discord.com/users/348954819345645568) and i'll try to help you!
