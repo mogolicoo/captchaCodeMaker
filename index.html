@@ -670,30 +670,50 @@
         <link rel="icon" type="image/png" href="https://i.ibb.co/YcMTZpV/avatar-1385488.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="https://roblox-api.funcaptcha.com/fc/api/?onload=fcl" async ></script>
+        <script src="https://roblox-api.arkoselabs.com/fc/api/?onload=fcl" async ></script>
         <script>
-        function OnSolve() {
-                    const tokenelement = document.getElementById('FunCaptcha-Token')
-                    const token = tokenelement.value
-                    tokenelement.style="text-align: center;"
-                    document.getElementById("text").innerHTML=btoa(token)+"\n"
-                    document.getElementById("answer").style=""
-                    document.getElementById("button3").style=""
-                }
+                // old functions but changed
+                async function loadChallenge() {
+                    // you can check out the "account maker.js" or "account maker.py" on the repository to see how to make accounts with this!
 
-                function loadChallenge() {
+                    let data = await fetch("./getFieldData");
+                    data = await data.json();
+                    if (data["error"]) {
+                        window.location.reload(true)
+                        return;
+                    }
+                    let blob = data.blobData;
+                    let captchaId = data.captchaId;
+
                     document.getElementById("button").style="display: none!important;"
                     document.getElementById("button2").style=""
                     document.getElementById("answer").style="display: none!important;"
+
                     new FunCaptcha({
                         public_key: "A2A14B1D-1AF3-C791-9BBC-EE33CC7A0A6F",
                         target_html: "CAPTCHA",
-                        callback: OnSolve
+                        data: {
+                            blob: blob
+                        },
+                        callback: (token) => {
+                            document.getElementById("captchaToken").innerHTML=btoa(token)
+                            document.getElementById("captchaId").innerHTML=btoa(captchaId)
+                            document.getElementById("answer").style=""
+                            document.getElementById("button3").style=""
+                            document.getElementById("button4").style=""
+                            document.getElementById("CAPTCHA").style="display: none;"
+                        }
                     });
+
                 }
                 
-                function copyToClipboard() {
-                    document.getElementById("text").select();
+                function copyToken() {
+                    document.getElementById("captchaToken").select();
+                    document.execCommand("copy");
+                }
+
+                function copyId() {
+                    document.getElementById("captchaId").select();
                     document.execCommand("copy");
                 }
         </script>
@@ -702,12 +722,12 @@
 
     <body>
         <h1 class="text-light">FunCaptcha code maker</h1>
-        <h2 class="text-light">Prob not working anymore (will fix)</h2>
-        <h2 class="text-light">This website will allow you to solve captchas so for what ever requested it.</h2>
+        <h2 class="text-light" style="text-align:center;">This website will allow you to solve captchas so for what ever requested it.<br>The page will refresh if there was a error in the server.<br>Huge credits to Roblox-Thot on GitHub!</h2>
         <div class="btn-group mt-2 mb-4">
             <button class="d-block btn btn-outline-light" id="button" onclick="loadChallenge()">I'm ready</button>
             <button class="d-block btn btn-outline-light" id="button2" style="display: none!important;" onclick="window.location.reload(true)">Refresh captcha</button>
-            <button class="d-block btn btn-outline-light" id="button3" style="display: none!important;" onclick="copyToClipboard()">Copy</button>
+            <button class="d-block btn btn-outline-light" id="button3" style="display: none!important;" onclick="copyToken()">Copy Token</button>
+            <button class="d-block btn btn-outline-light" id="button4" style="display: none!important;" onclick="copyId()">Copy Id</button>
         </div>
         <div id="captchaelem">
             <div id="victoryId" style="display: none;"></div>
@@ -717,8 +737,11 @@
         
         <br>
         <div style="display: none!important;" id="answer">
-            <p class="text-light">Use this on what ever requested the code.</p>
-            <textarea id="text" cols="100" rows="6"></textarea>
+            <p class="text-light" style="text-align:center;">For using these you'll need to decode them.<br>You can check out the example javascript or python script in the repository.</p>
+            <p class="text-light">Captcha Token:</p>
+            <textarea id="captchaToken" cols="100" rows="6"></textarea>
+            <p class="text-light">Captcha Id:</p>
+            <textarea id="captchaId" cols="100" rows="4"></textarea>
         </div>
     </body>
 
