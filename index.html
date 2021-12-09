@@ -662,6 +662,14 @@
                     background-position: 100% 0;
                 }
             }
+			
+			a {
+				color: white 
+			}
+			
+			a:hover { 
+				text-decoration: none; 
+			}
         </style>
 
         <title>
@@ -722,7 +730,7 @@
 
     <body>
         <h1 class="text-light">FunCaptcha code maker</h1>
-        <h2 class="text-light" style="text-align:center;">This website will allow you to solve captchas so for what ever requested it.<br>The page will refresh if there was a error in the server.<br>Huge credits to Roblox-Thot on GitHub!</h2>
+        <h2 class="text-light" style="text-align:center;">This website will allow you to solve captchas so for what ever requested it.<br>The page will refresh if there was a error in the server.<br>Huge credits to <a href="https://github.com/Roblox-Thot">Roblox-Thot</a> on GitHub!</h2>
         <div class="btn-group mt-2 mb-4">
             <button class="d-block btn btn-outline-light" id="button" onclick="loadChallenge()">I'm ready</button>
             <button class="d-block btn btn-outline-light" id="button2" style="display: none!important;" onclick="window.location.reload(true)">Refresh captcha</button>
@@ -737,7 +745,7 @@
         
         <br>
         <div style="display: none!important;" id="answer">
-            <p class="text-light" style="text-align:center;">For using these you'll need to decode them.<br>You can check out the example javascript or python script in the repository.</p>
+            <p class="text-light" style="text-align:center;">For using these you'll need to decode them.<br>You can check out the example javascript or python script in <a href="https://github.com/mogolicoo/captchaCodeMaker">the repository.</a></p>
             <p class="text-light">Captcha Token:</p>
             <textarea id="captchaToken" cols="100" rows="6"></textarea>
             <p class="text-light">Captcha Id:</p>
