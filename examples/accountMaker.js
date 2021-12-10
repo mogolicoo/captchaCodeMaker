@@ -72,7 +72,8 @@ rl.question("Put your captcha token here: ", function (captchaToken) {
         let headers = response.headers;
         response = await response.json();
         if (!response["userId"]) {
-            console.log(response)
+            // debug
+            // console.log(response)
             console.log("Failed to create")
             rl.close();
             return;
