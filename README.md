@@ -1,5 +1,6 @@
 # Roblox Captcha Code Maker
-This will generate a FunCaptcha that works for account creation as of 12/09/2021
+This is a FunCaptcha generator for roblox account creaton that runs on Node.js!
+[Here's a version written in python! (Made by Roblox-Thot)](https://github.com/Roblox-Thot/captchaCodeMakerV2)
 
 # Installation:
 You'll need Node.js v16 or newer for running this.
