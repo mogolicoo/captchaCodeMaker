@@ -26,32 +26,9 @@ function randomStr(length) { // taken from stackoverflow!!!!
     return result;
 }
 
-async function generateRandomUser() { // uhhh don't ask why lol
-    let newUsername = randomStr(15)
-    let info = await fetch(`https://auth.roblox.com/v1/usernames/validate?request.username=${newUsername}&request.birthday=04%20Nov%201936&request.context=Signup`)
-    info = await info.json()
-    if (info.message == "Username is valid") {
-        return newUsername
-    } else {
-        let anotherTry = await generateRandomUser()
-        return anotherTry
-    }
-}
-
 async function getFieldData() { // this gets the data that the funcaptcha needs so it works
     let xcsrf = await getXCSRF();
-    let data = {
-        username: await generateRandomUser(), 
-        password: "askdaskdaskdsakdksad",
-        birthday: "04 Nov 1936",
-        gender: 2,
-        isTosAgreementBoxChecked: true,
-        context: "MultiverseSignupForm",
-        referralData: null,
-        displayAvatarV2: false,
-        displayContextV2: false
-    }
-    data = JSON.stringify(data);
+    let data = JSON.stringify({}); // so this shit should work without the need of sending data about usernames and shit
     let response = await fetch("https://auth.roblox.com/v2/signup", {
         method: "POST",
         headers: {
@@ -63,10 +40,6 @@ async function getFieldData() { // this gets the data that the funcaptcha needs 
         body: data
     });
     let fieldData = await response.json();
-    if (!fieldData["failureDetails"]) {
-        // for some reason the account was created without a captcha ?????
-        return undefined
-    }
     fieldData = fieldData.failureDetails[0].fieldData;
     return fieldData
 }
@@ -78,10 +51,6 @@ app.get("/", (req, res) => {
 
 app.get("/getFieldData", async (req, res) => {
     let fieldData = await getFieldData();
-    if (fieldData == undefined) {
-        res.json({error: "uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"})
-        return
-    }
     let captchaId = fieldData.split(",")[0];
     let blobData = fieldData.split(",")[1];
     res.json({captchaId: captchaId, blobData: blobData});
