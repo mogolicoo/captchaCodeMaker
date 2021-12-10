@@ -1,5 +1,6 @@
 # Roblox Captcha Code Maker
-This is a FunCaptcha generator for roblox account creaton that runs on Node.js!
+This is a FunCaptcha generator for roblox account creaton written in Javascript!
+
 [Here's a version written in python! (Made by Roblox-Thot)](https://github.com/Roblox-Thot/captchaCodeMakerV2)
 
 # Installation:
