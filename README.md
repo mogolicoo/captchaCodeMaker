@@ -1,3 +1,6 @@
+## ** this shit probably doesn't work anymore lmao **
+
+
 # Roblox Captcha Code Maker
 This is a FunCaptcha generator for roblox account creaton written in Javascript!
 
@@ -25,5 +28,3 @@ The captcha token and captcha id that the page provides are encoded in base64, y
 [Roblox-Thot](https://github.com/Roblox-Thot)
 
 [Misael](https://github.com/mogolicoo)
-
-## Need help with something? Add me on [Discord](https://discord.com/users/348954819345645568) and i'll try to help you!
